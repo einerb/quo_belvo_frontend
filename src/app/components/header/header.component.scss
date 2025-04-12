@@ -1,0 +1,37 @@
+.toolbar {
+  background-color: #0049b7;
+  color: #1a237e;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+
+  .logo img {
+    height: 32px;
+    cursor: pointer;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    box-shadow: none;
+  }
+
+  button.mat-button:hover {
+    background: transparent !important;
+  }
+}
+
+.menu-header {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+mat-divider {
+  margin: 0.25rem 0;
+}

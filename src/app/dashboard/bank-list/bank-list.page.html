@@ -1,0 +1,29 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="container">
+  <div class="title">
+    <h3>Seleccione el banco de su preferencia</h3>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="cards-grid-container">
+    @for(bank of banks(); track bank.name){
+    <mat-card class="card-item" (click)="goToDetail(bank.name)">
+      <mat-card-header>
+        <mat-card-title>{{ bank.displayName }}</mat-card-title>
+        <mat-card-subtitle>{{ bank.country }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="{{ bank.iconLogo}}"
+        alt="Photo {{bank.displayName}}"
+      />
+    </mat-card>
+    } @empty {
+    <p class="no-records">No hay instituciones bancarias.</p>
+    }
+  </div>
+  <div class="title">
+    <mat-divider></mat-divider>
+    <small>Bancos encontrados: {{ banks().length }}</small>
+  </div>
+</div>

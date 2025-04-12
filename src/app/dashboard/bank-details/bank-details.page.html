@@ -1,0 +1,37 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="container">
+  <div class="title">
+    <button mat-stroked-button color="primary" (click)="goToBanks()">
+      ← Volver a bancos
+    </button>
+
+    <h3>Seleccione la cuenta</h3>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="cards-grid-container">
+    @for(account of accounts(); track account.id){
+    <mat-card
+      class="card-item"
+      (click)="goToTransacctions(account.id, account.link)"
+    >
+      <mat-card-header>
+        <mat-card-title># <b>{{ account.number }}</b></mat-card-title>
+        <mat-card-subtitle
+          >Tipo de cuenta: {{ account.type }}</mat-card-subtitle
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <p>Moneda: {{account.currency}}</p>
+        <p>Categoría: {{account.category | formatCategory}}</p>
+      </mat-card-content>
+    </mat-card>
+    } @empty {
+    <p class="no-records">No hay cuentas asociadas a este banco.</p>
+    }
+  </div>
+  <div class="title">
+    <mat-divider></mat-divider>
+    <small>Cuentas asociadas: {{accounts().length}}</small>
+  </div>
+</div>

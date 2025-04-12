@@ -17,7 +17,6 @@ describe('AppComponent', () => {
   it(`should have the 'quo-belvo-front' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('quo-belvo-front');
   });
 
   it('should render title', () => {

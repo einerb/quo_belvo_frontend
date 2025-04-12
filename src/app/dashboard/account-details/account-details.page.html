@@ -1,0 +1,83 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<div class="container">
+  <div class="title">
+    <button mat-stroked-button color="primary" (click)="goToBankDetails()">
+      ← Volver a cuentas
+    </button>
+
+    <h3>Seleccione la cuenta</h3>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div style="max-width: 400px; margin: auto">
+    <div style="position: relative">
+      <canvas id="donutChart" style="max-height: 300px"> </canvas>
+      <div
+        style="
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-align: center;
+          color: {{ isNegative ? '#f44336' : '#4caf50' }}"
+      >
+        Balance <br />{{ balance | dynamicCurrency:currency }}
+      </div>
+    </div>
+    <div class="chart-summary" style="margin-top: 20px; text-align: center">
+      <div class="income" style="color: #4caf50; margin-bottom: 8px">
+        Ingresos: {{ income | dynamicCurrency:currency }}
+      </div>
+      <div class="expenses" style="color: #f44336">
+        Egresos: {{ expenses | dynamicCurrency:currency }}
+      </div>
+    </div>
+  </div>
+
+  <div class="table-transactions">
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="reference">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{element.reference}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>Categoría</th>
+          <td mat-cell *matCellDef="let element">{{element.category}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Tipo</th>
+          <td mat-cell *matCellDef="let element">{{element.type}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Monto</th>
+          <td mat-cell *matCellDef="let element">{{element.amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="balance">
+          <th mat-header-cell *matHeaderCellDef>Balance</th>
+          <td mat-cell *matCellDef="let element">{{element.balance}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{element.status}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>

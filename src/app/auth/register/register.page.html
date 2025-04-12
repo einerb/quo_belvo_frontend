@@ -1,0 +1,61 @@
+<div class="register-wrapper">
+  <mat-card class="register-card" appearance="outlined">
+    <form [formGroup]="form" (ngSubmit)="onRegister()">
+      <h1>Registrar cuenta</h1>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" autocomplete="username" />
+        @if(form.get('username')?.hasError('required')){
+        <mat-error> Usuario es obligatorio </mat-error>
+        } @if(form.get('username')?.hasError('minlength')){
+        <mat-error> Mín. 3 caracteres </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput formControlName="email" autocomplete="email" />
+        @if(form.get('email')?.hasError('required')){
+        <mat-error> Correo electrónico es obligatorio </mat-error>
+        } @if(form.get('email')?.hasError('email')){
+        <mat-error> Correo electrónico inválido </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="hidePassword() ? 'password' : 'text'"
+          formControlName="password"
+          autocomplete="current-password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword.set(!hidePassword())"
+          [attr.aria-label]="'Mostrar u ocultar contraseña'"
+        >
+          <mat-icon
+            >{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon
+          >
+        </button>
+        @if(form.get('password')?.hasError('required')){
+        <mat-error> Contraseña es obligatoria </mat-error>
+        } @if(form.get('password')?.hasError('minlength')){
+        <mat-error> Mín. 6 caracteres </mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="full-width" type="submit">
+        Registrar cuenta
+      </button>
+    </form>
+  </mat-card>
+  <p class="login-link">
+    Ya tengo cuenta.
+    <a routerLink="/auth/login">Iniciar sesión</a>
+  </p>
+</div>

@@ -1,0 +1,29 @@
+<div class="not-found-container">
+  <div class="content">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Página no encontrada</h1>
+    <p class="error-message">
+      Lo sentimos, la página que estás buscando no existe o ha sido movida.
+    </p>
+    <div class="action-buttons">
+      <button mat-stroked-button color="primary" (click)="goToHome()">
+        Ir al inicio
+      </button>
+    </div>
+  </div>
+  <div class="illustration">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        fill="#e6e6e6"
+        d="M256,16C123.5,16,16,123.5,16,256s107.5,240,240,240s240-107.5,240-240S388.5,16,256,16z M256,448
+        c-105.9,0-192-86.1-192-192S150.1,64,256,64s192,86.1,192,192S361.9,448,256,448z"
+      />
+      <path
+        fill="#e6e6e6"
+        d="M256,128c-70.7,0-128,57.3-128,128s57.3,128,128,128s128-57.3,128-128S326.7,128,256,128z M256,336
+        c-44.2,0-80-35.8-80-80s35.8-80,80-80s80,35.8,80,80S300.2,336,256,336z"
+      />
+      <circle fill="#e6e6e6" cx="256" cy="256" r="32" />
+    </svg>
+  </div>
+</div>

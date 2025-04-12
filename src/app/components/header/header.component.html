@@ -1,0 +1,24 @@
+<mat-toolbar class="toolbar">
+  <button mat-button class="logo" (click)="goToHome()">
+    <img src="images/logo.png" alt="Logo" height="32" />
+  </button>
+
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="userMenu">
+    <img class="avatar" src="https://i.pravatar.cc/40" alt="Avatar" />
+  </button>
+
+  <mat-menu #userMenu="matMenu" class="user-menu">
+    <div class="menu-header">
+      <span
+        >Hola, <b>{{ user()?.username }}</b></span
+      >
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
