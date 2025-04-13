@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: "http://localhost:8000/api",
+  apiUrl: "https://quo-belvo-backend.fly.dev/api",
   apiVersion: "v1",
 };
